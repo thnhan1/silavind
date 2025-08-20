@@ -1,12 +1,26 @@
 # Silavind
 
-A minimalist single-page Hugo theme...
+A minimalist single-page Hugo theme + Customize for Porfolio
 
-**// If you like it. Give me a star, plz. ⭐️**
+## Change logs
 
-## Usage
+Change logs of theme, hugo version and addtion features.
 
-Before start, make sure [Git](https://git-scm.com/) and [Hugo](https://gohugo.io/) are installed.
+|No.|Change| Description|Date|Status|
+|--|--|--|--|--|
+|4|Responsive menu |Add responsive menu for mobile|2025-08-20|finished|
+|3|Multi language support|Add multi language support|2025-08-20|preview|
+|2|Copy code block|Add custom css/js| 2025-08-20|preview|
+|1|`.Site.Author` -> `.Site.Params.Author`| `>=v0.124.0` |2025-08-19|finished|
+
+## 2. Usage
+
+### 2.0 Before start
+
+Make sure [Git](https://git-scm.com/) and [Hugo Extended](https://github.com/gohugoio/hugo/) are installed.
+
+> 💡 **Windows users:**  
+> Download and install the Hugo Extended version from the [release page](https://github.com/gohugoio/hugo/releases).
 
 Create and enter `Website` folder and run the `git init` command:
 
@@ -14,13 +28,13 @@ Create and enter `Website` folder and run the `git init` command:
 git init
 ```
 
-### Add and Update Theme
+### 2.1 Add and Update Theme
 
 Add theme by git submodule:
 
 ```bash
 git submodule init
-git submodule add https://github.com/ertzizart/silavind themes/silavind
+git submodule add https://github.com/thnhan1/silavind themes/silavind
 ```
 
 And updated Theme:
