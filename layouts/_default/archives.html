@@ -1,0 +1,104 @@
+{{ define "main" }}
+<style>
+    .archives {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .archives h1 {
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+    .archive-year {
+        margin-bottom: 3rem;
+    }
+
+    .archive-year h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .archive-month {
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+    }
+
+    .archive-month h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: #666;
+    }
+
+    .archive-list {
+        list-style: none;
+        padding: 0;
+        margin-left: 1rem;
+    }
+
+    .archive-item {
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+    }
+
+    .archive-item time {
+        color: #999;
+        font-size: 0.9rem;
+        min-width: 80px;
+        font-family: monospace;
+    }
+
+    .archive-item a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.2s;
+    }
+
+    .archive-item a:hover {
+        color: #0066cc;
+    }
+</style>
+
+<div class="archives">
+    <h1>{{ .Title }}</h1>
+
+    {{ $pages := where .Site.RegularPages "Section" "writings" }}
+    {{ $isVietnamese := eq .Site.Language.Lang "vi" }}
+
+    {{ range $pages.GroupByDate "2006" "desc" }}
+    <div class="archive-year">
+        <h2>{{ .Key }}</h2>
+
+        {{ range .Pages.GroupByDate "January" }}
+        <div class="archive-month">
+            {{ if $isVietnamese }}
+            <h3>Tháng {{ .Key | replaceRE "January" "1" | replaceRE "February" "2" | replaceRE "March" "3" | replaceRE
+                "April" "4" | replaceRE "May" "5" | replaceRE "June" "6" | replaceRE "July" "7" | replaceRE "August" "8"
+                | replaceRE "September" "9" | replaceRE "October" "10" | replaceRE "November" "11" | replaceRE
+                "December" "12" }}</h3>
+            {{ else }}
+            <h3>{{ .Key }}</h3>
+            {{ end }}
+            <ul class="archive-list">
+                {{ range .Pages }}
+                <li class="archive-item">
+                    {{ if $isVietnamese }}
+                    <time datetime="{{ .Date }}">{{ .Date.Format "02" }} Tháng {{ .Date.Format "1" }}</time>
+                    {{ else }}
+                    <time datetime="{{ .Date }}">{{ .Date.Format "02 Jan" }}</time>
+                    {{ end }}
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
+{{ end }}
