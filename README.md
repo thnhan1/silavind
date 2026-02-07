@@ -67,3 +67,7 @@ git push -u origin trunk
 ## Copyright
 
 Licensed under [The GNU General Public License v3.0](https://github.com/ertzizart/silavind/blob/trunk/LICENSE)
+
+## Feature Guide
+
+- [Feature Guide](./Feature-guide.md)
